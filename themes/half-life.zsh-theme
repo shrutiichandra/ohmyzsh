@@ -90,4 +90,4 @@ ZSH_THEME_RUBY_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_RVM_PROMPT_OPTIONS="v g"
 
 setopt prompt_subst
-PROMPT="${purple}%n%{$reset_color%} in ${limegreen}%~%{$reset_color%}\$(ruby_prompt_info)\$vcs_info_msg_0_${orange} λ%{$reset_color%} "
+PROMPT=$'%{$purple%}shruti%{$reset_color%} in %{$lavender%}%c%{$reset_color%}$(ruby_prompt_info " with%{$fg[red]%} " v g "%{$reset_color%}")$vcs_info_msg_0_%{$orange%} ⎰ %{$reset_color%} '
