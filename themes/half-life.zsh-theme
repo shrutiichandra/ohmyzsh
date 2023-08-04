@@ -24,11 +24,11 @@ fi
 
 autoload -Uz vcs_info
 # enable VCS systems you use
-zstyle ':vcs_info:*' enable git svn
+zstyle ':vcs_info:*' enable git
 
 # check-for-changes can be really slow.
 # you should disable it, if you work with large repositories
-zstyle ':vcs_info:*:prompt:*' check-for-changes true
+zstyle ':vcs_info:*:prompt:*' check-for-changes false
 
 # set formats
 # %b - branchname
@@ -66,9 +66,9 @@ function steeef_precmd {
   # check for untracked files or updated submodules, since vcs_info doesn't
   if [[ -n "$(git ls-files --other --exclude-standard 2>/dev/null)" ]]; then
     PR_GIT_UPDATE=1
-    FMT_BRANCH="${PM_RST} on ${turquoise}%b%u%c${hotpink} ●${PR_RST}"
+    FMT_BRANCH="${PM_RST} %b%u%c${hotpink} ●${PR_RST}"
   else
-    FMT_BRANCH="${PM_RST} on ${turquoise}%b%u%c${PR_RST}"
+    FMT_BRANCH="${PM_RST} %b%u%c${PR_RST}"
   fi
   zstyle ':vcs_info:*:prompt:*' formats       "${FMT_BRANCH}"
 
@@ -90,4 +90,4 @@ ZSH_THEME_RUBY_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_RVM_PROMPT_OPTIONS="v g"
 
 setopt prompt_subst
-PROMPT=$'%{$purple%}shruti%{$reset_color%} in %{$lavender%}%c%{$reset_color%}$(ruby_prompt_info " with%{$fg[red]%} " v g "%{$reset_color%}")$vcs_info_msg_0_%{$orange%} ⎰ %{$reset_color%} '
+PROMPT=$'%{$purple%}shruti%{$reset_color%} in %{$lavender%}%c%{$reset_color%}$(ruby_prompt_info " with%{$fg[red]%} " v g "%{$reset_color%}") on$vcs_info_msg_0_%{$orange%} ⎰ %{$reset_color%} '
